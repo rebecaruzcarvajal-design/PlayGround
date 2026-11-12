@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ed">
+  <title>¡Qué Rico! — Café & Cocina</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Qué Rico inicio"><span class="brand-mark">🍳</span><span>¡Qué <b>Rico!</b><small>CAFÉ & COCINA</small></span></a>
+      <div class="side-profile"><div class="avatar">👩🏽‍🍳<i></i></div><div><strong>Valentina</strong><span>Chef novata <b>✦ 2</b></span></div><button class="more-btn" aria-label="Perfil">•••</button></div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-item active" data-view="play"><span>🏠</span> Mi restaurante <i></i></button>
+        <button class="nav-item" data-view="editor"><span>🧩</span> Editor de niveles</button>
+        <button class="nav-item" data-view="restaurant"><span>🪴</span> Decorar local</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="daily-card"><div class="daily-sparkle">✨</div><strong>Reto del día</strong><p>Sirve 5 platos perfectos</p><div class="daily-progress"><span id="daily-progress"></span></div><small id="daily-label">0 / 5 completados</small></div>
+        <button class="help-link" id="sound-toggle"><span>🔔</span> Sonido <b>ON</b></button>
+        <div class="side-footer">Hecho con <span>♥</span> y mucho sazón</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span>🍳</span> ¡Qué <b>Rico!</b></div>
+        <div class="breadcrumb"><span>Mi restaurante</span><span class="crumb-dot">/</span><b id="crumb-title">Servicio del día</b></div>
+        <div class="top-stats"><div class="stat-chip coin-chip"><span>🪙</span><b id="coins">120</b><small>+</small></div><div class="stat-chip gem-chip"><span>💎</span><b>8</b><small>+</small></div><button class="settings-btn" id="settings" aria-label="Ajustes">⚙</button></div>
+      </header>
+
+      <section class="view active" id="play-view">
+        <div class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span> TU PRIMER RESTAURANTE</div><h1>¡Hora de cocinar! <span>👋</span></h1><p>Prepara platos deliciosos y haz felices a tus clientes.</p></div><button class="level-pill" id="level-pill"><span>⭐</span> Nivel <b id="level-number">1</b><span class="pill-arrow">›</span></button></div>
+        <div class="game-layout">
+          <div class="service-column">
+            <div class="restaurant-scene" id="restaurant-scene">
+              <div class="scene-sun"></div><div class="scene-window"><span>☀️</span><div class="window-view"><i></i><i></i><i></i></div></div>
+              <div class="wall-sign"><span>today's special</span><b>Good food<br>good mood</b><i>✦</i></div>
+              <div class="scene-plant plant-left">🪴</div><div class="scene-plant plant-right">🌿</div>
+              <div class="scene-counter"><div class="counter-top"></div><div class="counter-front"><span>QUÉ RICO</span><span>✦ &nbsp; FRESH DAILY &nbsp; ✦</span></div></div>
+              <div class="customer-row" id="customer-row" aria-live="polite"></div>
+              <div class="scene-floor"></div>
+              <div class="scene-label"><span class="open-badge"><i></i> ABIERTO</span><span>📍 Calle Bonita 12</span></div>
+            </div>
+            <div class="service-bar">
+              <div class="service-info"><div class="service-icon">⏱️</div><div><span>TIEMPO DE SERVICIO</span><b id="timer">01:00</b></div></div>
+              <div class="service-goal"><span>OBJETIVO DEL NIVEL</span><div><b id="goal-current">0</b><span> / </span><b id="goal-total">5</b> clientes <span class="goal-stars">☆☆☆</span></div></div>
+              <button class="service-btn" id="start-service"><span>▶</span> Comenzar servicio</button>
+            </div>
+            <div class="kitchen-card">
+              <div class="kitchen-heading"><div><span class="eyebrow">LA COCINA</span><h2>¿Qué vamos a preparar?</h2></div><span class="hint-chip">👆 Toca un plato para servir</span></div>
+              <div class="food-grid" id="food-grid"></div>
+            </div>
+          </div>
+          <aside class="right-column">
+            <div class="orders-card"><div class="card-title"><div><span class="eyebrow">MESA DE PEDIDOS</span><h2>En espera <span id="queue-count">0</span></h2></div><span class="queue-icon">🧾</span></div><div id="orders-list" class="orders-list"></div><div class="order-tip">💡 <span>¡Sirve rápido para ganar propinas extra!</span></div></div>
+            <div class="special-card"><div class="special-copy"><span>✨ CONSEJO CHEF</span><p>Los clientes pacientes dejan <b>más propina.</b></p></div><div>💛</div></div>
+            <div class="mini-level"><div class="mini-level-top"><span>PROGRESO</span><b id="level-percent">0%</b></div><div class="level-track"><i id="level-progress"></i></div><div class="mini-level-bottom"><span>⭐ Nivel <b id="mini-level-number">1</b></span><span id="xp-label">0 / 100 XP</span></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="editor-view">
+        <div class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span> CREA TU PROPIO RETO</div><h1>Editor de niveles <span>🧩</span></h1><p>Diseña un servicio a tu medida y juégalo cuando quieras.</p></div><div class="editor-actions"><button class="secondary-btn" id="reset-level">↺ Restablecer</button><button class="primary-btn" id="save-level">Guardar nivel <span>✓</span></button></div></div>
+        <div class="editor-layout">
+          <div class="editor-main">
+            <div class="editor-card"><div class="editor-section-heading"><span class="section-icon pink-icon">✍️</span><div><h2>Tu desafío</h2><p>Dale personalidad a tu nivel</p></div></div><label class="field-label" for="level-name">Nombre del nivel</label><input id="level-name" maxlength="32" value="Un día delicioso" placeholder="Ej. Almuerzo express"><label class="field-label">Dificultad</label><div class="difficulty-options"><button data-difficulty="relax" class="difficulty-option selected"><span>🌱</span><b>Relajado</b><small>¡Sin presión!</small></button><button data-difficulty="normal" class="difficulty-option"><span>⚡</span><b>Con ritmo</b><small>Un reto rico</small></button><button data-difficulty="rush" class="difficulty-option"><span>🔥</span><b>Hora punta</b><small>¡A cocinar!</small></button></div></div>
+            <div class="editor-card"><div class="editor-section-heading"><span class="section-icon yellow-icon">🎯</span><div><h2>Objetivos del servicio</h2><p>Ajusta el reto como más te guste</p></div></div><div class="slider-row"><div><b>Clientes por atender</b><small>¿Cuántos clientes quieres recibir?</small></div><div class="slider-control"><button data-step="customers" data-dir="-1">−</button><b id="customers-value">5</b><button data-step="customers" data-dir="1">+</button></div></div><div class="slider-row"><div><b>Duración del servicio</b><small>El tiempo corre cuando empiezas</small></div><div class="slider-control"><button data-step="time" data-dir="-1">−</button><b><span id="time-value">60</span><small> seg</small></b><button data-step="time" data-dir="1">+</button></div></div><div class="slider-row"><div><b>Platos por pedido</b><small>Más platos, más monedas</small></div><div class="slider-control"><button data-step="items" data-dir="-1">−</button><b id="items-value">1</b><button data-step="items" data-dir="1">+</button></div></div></div>
+            <div class="editor-card menu-editor"><div class="editor-section-heading"><span class="section-icon mint-icon">🍽️</span><div><h2>Menú disponible</h2><p>Elige qué recetas podrán pedir tus clientes</p></div><span class="selected-counter" id="menu-count">4 seleccionados</span></div><div class="recipe-select-grid" id="recipe-select-grid"></div></div>
+          </div>
+          <aside class="editor-side"><div class="preview-card"><div class="preview-top"><span>VISTA PREVIA</span><span class="preview-live"><i></i> EN VIVO</span></div><div class="preview-scene"><div class="preview-awning">🍴 &nbsp; QUÉ RICO</div><div class="preview-table">🍽️</div><div class="preview-person">👩🏻‍🍳</div><div class="preview-caption"><b id="preview-name">Un día delicioso</b><span id="preview-meta">5 clientes · 60 segundos</span></div></div><div class="preview-stats"><div><span>⭐ RECOMPENSA</span><b id="preview-reward">+75 🪙</b></div><div><span>🏆 DIFICULTAD</span><b id="preview-difficulty">Relajado</b></div></div><button class="primary-btn preview-play" id="play-custom">▶ &nbsp; Probar este nivel</button></div><div class="editor-note">💾 <span>Tu nivel personalizado se guarda en este dispositivo.</span></div></aside>
+        </div>
+      </section>
+
+      <section class="view" id="restaurant-view">
+        <div class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span> HAZLO A TU MANERA</div><h1>Decora tu local <span>🪴</span></h1><p>Un restaurante bonito atrae más clientes felices.</p></div><div class="wallet-large">🪙 <b id="decor-coins">120</b></div></div>
+        <div class="decor-layout"><div class="decor-preview"><div class="decor-room" id="decor-room"><div class="decor-window">🌤️<div>🌳 🌳 🌳</div></div><div class="decor-pendant">💡</div><div class="decor-frame">☕<small>GOOD<br>VIBES</small></div><div class="decor-plants" id="decor-plants">🪴</div><div class="decor-tables"><div>🍽️</div><div>🌷 🍽️</div></div><div class="decor-counter"><span>QUÉ RICO</span></div><div class="decor-floor"></div><span class="decor-name">MI CAFÉ BONITO</span></div><div class="decor-caption"><span>✨</span><div><b>Tu espacio, tu estilo</b><small>Toca un objeto para ver cómo queda</small></div><span>↗</span></div></div><div class="decor-shop"><div class="shop-heading"><div><span class="eyebrow">TIENDA DE DECORACIÓN</span><h2>Pequeños detalles, gran encanto</h2></div><span class="shop-bag">🛍️</span></div><div class="shop-tabs"><button class="shop-tab selected" data-category="all">Todo</button><button class="shop-tab" data-category="plants">Plantas</button><button class="shop-tab" data-category="furniture">Muebles</button><button class="shop-tab" data-category="wall">Paredes</button></div><div class="shop-grid" id="shop-grid"></div></div></div>
+      </section>
+
+      <footer class="page-footer"><span>¡Qué Rico! <b>·</b> Cocina con cariño, sirve con alegría.</span><span>Progreso guardado automáticamente <i>✓</i></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modal-backdrop"><div class="result-modal" id="result-modal"></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
